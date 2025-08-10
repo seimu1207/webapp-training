@@ -1,4 +1,4 @@
-<!--所要時間;8/5時点で、2.5時間--> 
+<!--所要時間;8/11時点で、8.5時間--> 
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -7,10 +7,17 @@
     <!-- モバイル用の表示設定 -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
   </head>
 <body>
     <header>
-        <h1>画面のモックアップ</h1>
+        <p>以下のItemはドラッグが<strong>できます</strong>。</p>
+        <div class="navigation">
+          <div class="item">home</div>
+          <div class="item">about</div>
+          <div class="item">services</div>
+          <div class="item">contract</div>
+        </div>
     </header>
     <main>
         <div class="description">
@@ -19,20 +26,21 @@
         </div>
         <div class="input">
         <h2>入力フィールド</h2>
-        <form action="#" method="post">
+        <form action="#" id="form" method="post" onsubmit="return checksubmit()">
             <label for="name">名前:</label>
-            <input type="text" id="name" name="name" required />
+            <input type="text" id="name" name="content" required />
             <br />
             <label for="email">メールアドレス:</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="content" required />
             <br />
-            <button type="submit">送信</button>
+            <button type="submit" >送信</button>
         </form>
         </div>
+        <p id="output"></p>
+        <script src="js.js"></script>
     </main>
     <footer>
         <p>&copy; 2025 モックアッププロジェクト</p>
     </footer>
 </body>
 </html>
-
