@@ -6,9 +6,9 @@
 
 // 機能1：navigationペインのドラッグ＆ドロップ機能を実装するためのコード
 const sortable = new Draggable.Sortable(document.querySelectorAll('.navigation'), {
- draggable: '.item'
+  draggable: '.item'
 })
-sortable.on('sortable:start', () => console.log('sortable:start'))
+sortable.on('sortable:start', (event) => console.log('sortable:start'))
 sortable.on('sortable:sort', () => console.log('sortable:sort'))
 sortable.on('sortable:sorted', () => console.log('sortable:sorted'))
 sortable.on('sortable:stop', () => console.log('sortable:stop'))
@@ -34,3 +34,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('toggle-btn');
+  const body = document.body;
+
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('item-closed');
+    
+    // ボタンのテキストを切り替える
+    if (body.classList.contains('item-closed')) {
+      toggleBtn.textContent = '👆';
+    } else {
+      toggleBtn.textContent = '👉';
+    }
+  });
+});
