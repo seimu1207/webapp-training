@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ユーザー情報取得</title>
+        <style>
+            body{
+                background-color: #f4f4f4;
+                padding: 20px;
+            }
+
+            #user-list {
+                display: flex;
+                flex-direction: column;
+                width: 300px;
+                gap: 20px;         
+                padding: 0;
+                list-style: none;
+            }
+
+            .card {
+                background-color: white;
+                border-radius: 5px;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>ユーザー一覧</h1>
+        <button id="load-users">ユーザーを表示</button>
+        <ul id="user-list"></ul>
+
+        <script>
+            document.getElementById('load-users').addEventListener('click', () =>{
+                fetch('https://jsonplaceholder.typicode.com/users')
+                .then((response) => response.json())
+                .then((users) => {
+                    const userList = document.getElementById('user-list');
+                    userList.innerHTML = '';
+                    users.forEach((user) => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'card';
+                        listItem.innerHTML =`
+                            <h2>${user.name}</h2>
+                            <p>メール： ${user.email}</p>
+                            <sapn>ユーザーネーム: ${user.username}</sapn>
+                        `;
+                        userList.appendChild(listItem);
+                    });
+                })
+                .catch((error) => {
+                    console.error('エラーが発生しました:', error);
+                });
+            });
+        </script>
+    </body>
+</html>
