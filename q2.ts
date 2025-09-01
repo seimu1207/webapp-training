@@ -1,3 +1,4 @@
+//参考URL→https://zenn.dev/estra/articles/ts-with-promise-type-annotation#promise-%E3%81%AE%E5%9E%8B%E6%B3%A8%E9%87%88
 
 const loadusersButton = document.getElementById('load-users') as HTMLButtonElement;
 
